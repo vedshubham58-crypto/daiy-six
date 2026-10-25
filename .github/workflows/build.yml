@@ -5,6 +5,9 @@ on:
   pull_request:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -26,3 +29,16 @@ jobs:
         with:
           name: daily-six-test-apk
           path: app/build/outputs/apk/debug/app-debug.apk
+
+      # A fixed download link that's easy to open on a phone:
+      # https://github.com/<owner>/<repo>/releases/download/test-build/daily-six-test.apk
+      - name: Publish test APK as a download link
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cp app/build/outputs/apk/debug/app-debug.apk daily-six-test.apk
+          gh release delete test-build --yes --cleanup-tag || true
+          gh release create test-build daily-six-test.apk --prerelease \
+            --title "Test build (latest)" \
+            --notes "Test version with Google test ads. Built from ${GITHUB_SHA::7}."

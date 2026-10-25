@@ -5,9 +5,8 @@ A daily 6×6 number puzzle for Android. Everyone gets the same puzzle each day, 
 **Earns money from:** AdMob banner, full-screen ads between practice puzzles, rewarded "watch an ad for a hint", and a one-time **Pro** upgrade (no ads, unlimited hints) sold through Google Play.
 
 ## Get the test app on your phone
-1. Open the **Actions** tab of this repo on GitHub and click the latest green **Build app** run.
-2. Under **Artifacts**, download `daily-six-test-apk` and unzip it.
-3. Copy `app-debug.apk` to your Android phone and open it (allow "install unknown apps" when asked).
+1. On your phone, open https://github.com/vedshubham58-crypto/daiy-six/releases/download/test-build/daily-six-test.apk
+2. Open the downloaded file (allow "install unknown apps" when asked).
 
 The test app shows Google's test ads, which is expected.
 
